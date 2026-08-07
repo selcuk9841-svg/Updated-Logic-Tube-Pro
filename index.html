@@ -1,29 +1,40 @@
-name: Deploy to GitHub Pages
-on:
- push:
- branches: [main]
-permissions:
- contents: read
- pages: write
- id-token: write
-jobs:
- build-deploy:
- runs-on: ubuntu-latest
- environment:
- name: github-pages
- url: ${{ steps.deployment.outputs.page_url }}
- steps:
- - uses: actions/checkout@v4
- - uses: pnpm/action-setup@v3
- with:
- version: 9
- - uses: actions/setup-node@v4
- with:
- node-version: 20
- - run: pnpm install --no-frozen-lockfile
- - run: pnpm run build
- - uses: actions/upload-pages-artifact@v3
- with:
- path: dist
- - id: deployment
- uses: actions/deploy-pages@v4
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Logic Tube Pro</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="menu">
+
+<h1>🧪 Logic Tube Pro</h1>
+
+<button id="startButton">
+OYUNA BAŞLA
+</button>
+
+</div>
+
+<div id="game" class="hidden">
+
+<h2>Seviye 1</h2>
+
+<div id="board">
+
+</div>
+
+<button id="backButton">
+Ana Menü
+</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
